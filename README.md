@@ -1,5 +1,5 @@
 
-# Teuton Server
+# Teuton Client
 
 ## Introduction
 
@@ -7,48 +7,16 @@
 
 When a S-NODE user X wants to be tested, must wait until T-NODE user launch Teuton test unit.
 
-## Teuton Server software
+## Teuton Client software
 
-First, Teuton server is installed into T-NODE and S-NODE.
-
-Then, T-NODE user configure and init Teuton Server so remote machine S-NODE users can make requests.
-
+Teuton client is used to send request to TeutonServer (T-NODE host).
 This way, S-NODE host is evaluated by the server at any time without T-NODE user intervention.
 
 ---
-# Running Teuton Server
-
-* `teuton-server init`, create Teuton Server configuration file on T-NODE host.
-* Change `server.yaml` configurations (server IP, testunits names, clients IP, etc):
-
-```
----
-:server:
- :ip: 127.0.0.1
- :port: 16000
- :testunits:
-   - testname01
-:clients:
-- :members: client01
- :ip: 127.0.0.1
-```
-
-* `teuton-server ` runs Teuton Server:
-
-```
-teuton-server => Starting...
-                Configfile : ./server.yaml
-                Listen on  : 127.0.0.1:16000
-                Test list  : testname01
-                (CTRL+C to exit)
-teuton-server => service [1] listening on '16001'...
-
-```
-
 # Running Teuton Client
 
-From S-NODE host:
-* `teuton-client localhost 16001`, user makes request:
+* TeutonServer must be running into T-NODE host.
+* From S-NODE host, user makes request executing `teuton-client localhost 16001`:
 
 ```
 teuton-client => Waiting...   localhost:16001 (teuton-server)
