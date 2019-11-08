@@ -10,13 +10,9 @@ Vagrant.configure("2") do |config|
       "enp2s0"
     ]
 
+    i.vm.synced_folder "./", "/vagrant"
     i.vm.provision "shell", inline: <<-SHELL
     apt-get install -y ruby
-    gem install rake
-    cd /opt
-    git clone https://github.com/dvarrui/teuton-server.git
-    cd teuton-server
-    rake install_gems
     SHELL
     i.vm.provider "virtualbox" do |v|
       v.name = 'teuton-client'
