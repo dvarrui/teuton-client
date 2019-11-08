@@ -6,8 +6,10 @@ Gem::Specification.new do |s|
   s.summary     = "Teuton Client"
   s.description = "Use TeutonClient send requests to TeutonServer"
   s.authors     = ["David Vargas Ruiz"]
-  s.email       = 'teuton.softwware@protonmail.com'
-  s.files       = ["lib/teuton-client.rb"]
+  s.email       = 'teuton.software@protonmail.com'
+  s.files       = ['lib/client/files/client.yaml',
+                   'lib/client/input_loader.rb',
+                   'lib/teuton-client.rb']
   s.homepage    = 'https://rubygems.org/gems/teuton-client'
   s.license     = 'GPL-3.0'
 end
