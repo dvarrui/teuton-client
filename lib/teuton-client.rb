@@ -1,7 +1,7 @@
 require 'fileutils'
 require 'rainbow'
 require 'socket'
-require_relative 'client/input_loader'
+require_relative 'teuton-client/input_loader'
 
 module TeutonClient
   VERSION = '0.0.1'
@@ -46,8 +46,8 @@ module TeutonClient
   end
 
   def self.init
-    src = File.join(File.dirname(__FILE__), 'client', 'files', 'client.yaml')
-    dest = File.join( 'client.yaml')
+    src = File.join(File.dirname(__FILE__), 'teuton-client', 'files', 'teuton-client.yaml')
+    dest = File.join( 'teuton-client.yaml')
     if File.exists? dest
       puts "teuton-client => " + Rainbow("File \'#{dest}\' exists!").red
       exit 1
