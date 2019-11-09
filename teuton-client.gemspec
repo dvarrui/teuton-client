@@ -1,19 +1,20 @@
 require_relative 'lib/teuton-client/application'
 
 Gem::Specification.new do |s|
-  s.name        = 'teuton-client'
+  s.name        = Application::NAME
   s.version     = Application::VERSION
   s.date        = '2019-11-08'
   s.summary     = "TeutonClient (Teuton Software)"
   s.description = "TeutonClient send evaluation requests to TeutonServer"
 
   s.license     = 'GPL-3.0'
-  s.authors     = ["David Vargas Ruiz"]
+  s.authors     = ['David Vargas Ruiz']
   s.email       = 'teuton.software@protonmail.com'
   s.homepage    = 'https://github.com/dvarrui/teuton-client'
 
   s.executables << 'teuton-client'
   s.files       = %w[lib/teuton-client/files/teuton-client.yaml
+                   lib/teuton-client/application.rb
                    lib/teuton-client/input_loader.rb
                    lib/teuton-client.rb]
 
