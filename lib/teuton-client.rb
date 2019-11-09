@@ -4,6 +4,8 @@ require 'socket'
 require_relative 'client/input_loader'
 
 module TeutonClient
+  VERSION = '0.0.1'
+
   def self.run(args)
     hostname, port = InputLoader.read_input_args(args)
     connect_to_server(hostname, port)
@@ -39,7 +41,7 @@ module TeutonClient
   end
 
   def self.show_version
-    puts "teuton-client => " + Rainbow("version 0.0.1").cyan
+    puts "teuton-client => " + Rainbow("version #{VERSION}").cyan
     exit 0
   end
 

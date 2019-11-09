@@ -9,7 +9,7 @@ end
 desc 'Check installation'
 task :check do
   check_gems gems
-  check_tests
+  run_tests
 end
 
 desc 'Rake help'
@@ -33,7 +33,7 @@ def check_gems(gems)
   puts "[ FAIL ] Gems to install!: #{fails.join(',')}" unless fails == []
 end
 
-def check_tests
+def run_tests
   testfile = File.join('.', 'tests', 'all.rb')
   a = File.read(testfile).split("\n")
   b = a.select { |i| i.include? '_test' }
