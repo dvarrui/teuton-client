@@ -19,10 +19,11 @@ end
 
 desc 'Build gem'
 task :build do
+  system('rm teuton-client-*.*.*.gem')
   system('gem build teuton-client.gemspec')
 end
 
-desc 'Gems installation'
+desc 'Developer installation'
 task :install_gems do
   install_gems gems
   create_symbolic_link
