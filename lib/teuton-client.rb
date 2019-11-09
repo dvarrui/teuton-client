@@ -2,9 +2,9 @@ require 'fileutils'
 require 'rainbow'
 require 'socket'
 require_relative 'teuton-client/input_loader'
+require_relative 'teuton-client/application'
 
 module TeutonClient
-  VERSION = '0.0.1'
 
   def self.run(args)
     hostname, port = InputLoader.read_input_args(args)
@@ -34,20 +34,22 @@ module TeutonClient
     puts "    teuton-client [help|version] [IP [PORT]]"
     puts "Params:"
     puts "    help    , Show this help"
-    puts "    init    , Create client.yaml config file"
+    puts "    init    , Create \'#{Application::CONFIGFILE}\' config file"
     puts "    IP PORT , Teuton server IP and/or PORT"
     puts "    version , Show current version"
     exit 0
   end
 
   def self.show_version
-    puts "teuton-client => " + Rainbow("version #{VERSION}").cyan
+    puts "teuton-client => " +
+         Rainbow("version #{Application::VERSION}").cyan
     exit 0
   end
 
   def self.init
-    src = File.join(File.dirname(__FILE__), 'teuton-client', 'files', 'teuton-client.yaml')
-    dest = File.join( 'teuton-client.yaml')
+    src = File.join(File.dirname(__FILE__), 'teuton-client', 'files',
+          Application::CONFIGFILE)
+    dest = File.join(Application::CONFIGFILE)
     if File.exists? dest
       puts "teuton-client => " + Rainbow("File \'#{dest}\' exists!").red
       exit 1

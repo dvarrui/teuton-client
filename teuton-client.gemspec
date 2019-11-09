@@ -1,8 +1,8 @@
-require_relative 'lib/teuton-client'
+require_relative 'lib/teuton-client/application'
 
 Gem::Specification.new do |s|
   s.name        = 'teuton-client'
-  s.version     = TeutonClient::VERSION
+  s.version     = Application::VERSION
   s.date        = '2019-11-08'
   s.summary     = "TeutonClient (Teuton Software)"
   s.description = "TeutonClient send evaluation requests to TeutonServer"
