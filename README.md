@@ -7,6 +7,10 @@
 
 When a S-NODE user X wants to be tested, must wait until T-NODE user launch Teuton test unit.
 
+## Installation 
+
+`gem install teuton-client`
+
 ## Teuton Client software
 
 Teuton client is used to send request to TeutonServer (T-NODE host).
