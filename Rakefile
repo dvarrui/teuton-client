@@ -23,10 +23,14 @@ task :build do
   puts "[ INFO ] Building gem..."
   system('rm teuton-client-*.*.*.gem')
   system('gem build teuton-client.gemspec')
+  puts "[ INFO ] Generating documentation..."
+  system('rm -r html/')
+  system('yardoc lib/* -o html')
+  puts "[ INFO ] Done"
 end
 
 desc 'Developer installation'
-task :install_gems do
+task :install_devel do
   install_gems gems
   create_symbolic_link
 end
