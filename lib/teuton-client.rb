@@ -4,15 +4,25 @@ require 'socket'
 require_relative 'teuton-client/input_loader'
 require_relative 'teuton-client/application'
 
+##
+# This module has methods to run Teuton Client
 module TeutonClient
 
+  ##
+  # Run Teuton Client
+  # @param args [Array] Input arguments
+  # @return [Exit status]
   def self.run(args)
     hostname, port = InputLoader.read_input_args(args)
     connect_to_server(hostname, port)
     exit 0
   end
 
-  def self.connect_to_server(hostname='localhost', port='6174')
+  ##
+  # Connect client to server and display server response.
+  # @param hostname [String] Server hostname or IP
+  # @param port [Integer] Server listening port
+  def self.connect_to_server(hostname='localhost', port=16000)
     puts Rainbow("teuton-client => Waiting...   " +
                  "#{hostname}:#{port} (teuton-server)").bright
     begin
@@ -29,6 +39,9 @@ module TeutonClient
     s.close                # Close the socket when done
   end
 
+  ##
+  # Show TeutonClient help.
+  # @return [Exit status]
   def self.show_help
     puts "Usage:"
     puts "    teuton-client [help|version] [IP [PORT]]"
@@ -40,12 +53,18 @@ module TeutonClient
     exit 0
   end
 
+  ##
+  # Show TeutonClient version
+  # @return [Exit status]
   def self.show_version
     puts "teuton-client => " +
          Rainbow("version #{Application::VERSION}").cyan
     exit 0
   end
 
+  ##
+  # Create default configuration file.
+  # @return [Exit status]
   def self.init
     src = File.join(File.dirname(__FILE__), 'teuton-client', 'files',
           Application::CONFIGFILE)
