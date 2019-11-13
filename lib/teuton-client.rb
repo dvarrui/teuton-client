@@ -13,7 +13,7 @@ module TeutonClient
     # @param args [Array] Input arguments
     # @return [Exit status]
     def run(args)
-      hostname, port = InputLoader.read_input_args(args)
+      hostname, port = InputLoader.read_configuration(args)
       connect_to_server(hostname, port)
       exit 0
     end
@@ -23,7 +23,7 @@ module TeutonClient
     # @return [Exit status]
     def show_help
       puts "Usage:"
-      puts "    teuton-client [help|version] [IP [PORT]]"
+      puts "    teuton-client [help|version] [IP PORT]"
       puts "Params:"
       puts "    help    , Show this help"
       puts "    init    , Create \'#{Application::CONFIGFILE}\' config file"
