@@ -18,12 +18,16 @@ When a S-NODE user wants to be tested, must wait until T-NODE user launch manual
 * First, TeutonServer must be running into T-NODE host.
 * `teuton-client SERVER-IP 16001`, S-NODE user send requet ro server.
 
-Let¡s see an example:
+## Examples
+
+TeutonClient connecting to SERVER-IP, port 16001:
 
 ```
 teuton-client => Waiting...   SERVER-IP:16001 (teuton-server)
               => Connection : SERVER-IP:16001 -> 127.0.0.1:34080
               => Timestamp  : 2019-11-06 19:06:22 +0000
-              => Action     : teuton play --quiet --case=1 ./testname01
+              => Testname   : testname01
               => Grade      : 100
 ```
+
+TeutonServer process request and responds with evaluation grade 100% OK.
