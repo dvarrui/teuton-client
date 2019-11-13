@@ -42,7 +42,7 @@ module TeutonClient
     end
 
     ##
-    # Create default configuration file.
+    # Create default configuration file 'teuton-client.yaml'.
     # @return [Exit status]
     def init
       src = File.join(File.dirname(__FILE__), 'teuton-client', 'files',
