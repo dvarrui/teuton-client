@@ -3,7 +3,7 @@ require_relative 'lib/teuton-client/application'
 Gem::Specification.new do |s|
   s.name        = Application::NAME
   s.version     = Application::VERSION
-  s.date        = '2019-11-08'
+  s.date        = '2020-02-17'
   s.summary     = "TeutonClient (Teuton Software)"
   s.description = <<-EOF
   TeutonClient send evaluation requests to TeutonServer.
@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
 
   s.executables << 'teuton-client'
   s.files       = Dir.glob(File.join('lib','**','*.rb')) +
+                  Dir.glob(File.join('lib','teuton-client','files','*')) +
                   Dir.glob(File.join('docs','**','*.md'))
 
   s.add_runtime_dependency 'rainbow', '~> 3.0'

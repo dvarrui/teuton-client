@@ -1,4 +1,6 @@
 
+[![Gem Version](https://badge.fury.io/rb/teuton-client.svg)](https://badge.fury.io/rb/teuton-client)
+
 # Teuton Client
 
 ## Introduction
