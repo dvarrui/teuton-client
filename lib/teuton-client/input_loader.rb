@@ -18,8 +18,13 @@ module InputLoader
       param = read_yaml(Application::CONFIGFILE)
       return param[:server][:ip], param[:server][:port]
     end
-    ip = (input[0] ? input[0] : 'localhost')
-    port = (input[1] ? input[1] : 16001)
+    unless input.size == 2
+      puts "Usage: teuton-client help"
+      exit 1
+    end
+
+    ip = input[0]
+    port = (input[1].to_i > 16000 ? input[1] : (input[1].to_i + 16000).to_s)
     return ip, port
   end
 
