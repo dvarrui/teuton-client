@@ -1,83 +1,16 @@
 # frozen_string_literal: true
 
+require_relative 'tasks/build'
+require_relative 'tasks/install'
+
 gems = %w[rainbow minitest]
 
 desc 'Default: check'
-task default: :check do
-end
-
-desc 'Check installation'
-task :check do
-  check_gems gems
-  run_tests
-  Rake::Task['build'].invoke
+task :default do
+  Rake::Task['install:check'].invoke
 end
 
 desc 'Rake help'
 task :help do
   system('rake -T')
-end
-
-desc 'Build gem'
-task :build do
-  puts "[ INFO ] Building gem..."
-  system('rm teuton-client-*.*.*.gem')
-  system('gem build teuton-client.gemspec')
-end
-
-desc 'Generate docs'
-task :docs do
-  puts "[ INFO ] Generating documentation..."
-  system('rm -r html/')
-  system('yardoc lib/* -o html')
-  puts "[ INFO ] Done"
-end
-
-desc 'Developer installation'
-task :install_devel do
-  install_gems gems
-  create_symbolic_link
-end
-
-def check_gems(gems)
-  fails = filter_uninstalled_gems(gems)
-  puts "[ FAIL ] Gems to install!: #{fails.join(',')}" unless fails == []
-end
-
-def run_tests
-  testfile = File.join('.', 'tests', 'all.rb')
-  a = File.read(testfile).split("\n")
-  b = a.select { |i| i.include? '_test' }
-  d = File.join('.', 'tests', '**', '*_test.rb')
-  e = Dir.glob(d)
-  puts "[ FAIL ] Some ruby tests are not executed by" +
-       "#{testfile}" unless b.size == e.size
-  puts "[ INFO ] Running #{testfile}"
-  system(testfile)
-end
-
-def filter_uninstalled_gems(list)
-  cmd = `gem list`.split("\n")
-  names = cmd.map { |i| i.split(' ')[0] }
-  fails = []
-  list.each { |i| fails << i unless names.include?(i) }
-  fails
-end
-
-def install_gems list
-  fails = filter_uninstalled_gems(list)
-  if !fails.empty?
-    puts "[ INFO ] Installing gems..."
-    fails.each do |name|
-      system("gem install #{name}")
-    end
-  else
-    puts '[  OK  ] Gems installed'
-  end
-end
-
-def create_symbolic_link
-  puts '[ INFO ] Creating symbolic link into /usr/local/bin'
-  basedir = File.dirname(__FILE__)
-  system("ln -s #{basedir}/teuton-client /usr/local/bin/teuton-client")
 end

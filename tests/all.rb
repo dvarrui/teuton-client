@@ -1,1 +1,3 @@
-puts "[DEBUG] executing all.rb..."
+#!/usr/bin/env ruby
+
+puts "[ DEBUG] Executing all.rb..."
