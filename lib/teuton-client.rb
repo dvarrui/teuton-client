@@ -25,7 +25,7 @@ module TeutonClient
     puts 'Commands:'
     puts '  teuton-client help     # Show this help'
     puts "  teuton-client init     # Create \'#{Application::CONFIGFILE}\' config file"
-    puts '  teuton-client IP PORT  # Send request to Teuton server IP and/or PORT'
+    puts '  teuton-client IP PORT  # Send request to Teuton server'
     puts '  teuton-client version  # Show current version'
     exit 0
   end
@@ -44,14 +44,14 @@ module TeutonClient
   # @return [Exit status]
   def self.init
     src = File.join(File.dirname(__FILE__), 'teuton-client', 'files',
-          Application::CONFIGFILE)
+                    Application::CONFIGFILE)
     dest = File.join(Application::CONFIGFILE)
-    if File.exists? dest
-      puts "teuton-client => " + Rainbow("File \'#{dest}\' exists!").red
+    if File.exist? dest
+      puts 'teuton-client => ' + Rainbow("File \'#{dest}\' exists!").red
       exit 1
     end
     FileUtils.cp(src, dest)
-    puts "teuton-client => " + Rainbow("Init \'#{dest}\' done!").yellow
+    puts 'teuton-client => ' + Rainbow("Init \'#{dest}\' done!").yellow
     exit 0
   end
 
@@ -59,14 +59,14 @@ module TeutonClient
   # Connect client to server and display server response.
   # @param hostname [String] Server hostname or IP
   # @param port [Integer] Server listening port
-  private_class_method def self.connect_to_server(hostname='localhost', port=16000)
-    puts Rainbow("teuton-client => Waiting...   " +
-                 "#{hostname}:#{port} (teuton-server)").bright
+  private_class_method def self.connect_to_server(hostname = 'localhost', port = 16_000)
+    puts Rainbow('teuton-client => Waiting...   ' \
+                 "teuton-server on #{hostname}:#{port}").bright
     begin
       s = TCPSocket.open(hostname, port)
     rescue
-      puts Rainbow("teuton-client => " +
-                   "ERROR        teuton-server not found!" +
+      puts Rainbow('teuton-client => ' \
+                   'ERROR        teuton-server not found!' \
                    " [#{hostname}:#{port}]").bright.red
       exit 1
     end
