@@ -3,8 +3,6 @@
 require_relative 'tasks/build'
 require_relative 'tasks/install'
 
-gems = %w[rainbow minitest]
-
 desc 'Default: check'
 task :default do
   Rake::Task['install:check'].invoke

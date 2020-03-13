@@ -21,13 +21,12 @@ module TeutonClient
   # Show TeutonClient help.
   # @return [Exit status]
   def self.show_help
-    puts "Usage:"
-    puts "    teuton-client [help|version] [IP PORT]"
-    puts "Params:"
-    puts "    help    , Show this help"
-    puts "    init    , Create \'#{Application::CONFIGFILE}\' config file"
-    puts "    IP PORT , Teuton server IP and/or PORT"
-    puts "    version , Show current version"
+    puts 'teuton-client'
+    puts 'Commands:'
+    puts '  teuton-client help     # Show this help'
+    puts "  teuton-client init     # Create \'#{Application::CONFIGFILE}\' config file"
+    puts '  teuton-client IP PORT  # Send request to Teuton server IP and/or PORT'
+    puts '  teuton-client version  # Show current version'
     exit 0
   end
 
