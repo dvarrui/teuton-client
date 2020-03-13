@@ -3,21 +3,27 @@
 
 # Teuton Client
 
-## Introduction
+[Teuton Software](https://github.com/teuton-software/teuton) is an infrastructure test application, that is installed into host called T-NODE.
 
-[Teuton Software](https://github.com/teuton-software/teuton) is an infrastructure test application, that is installed into host called T-NODE. T-NODE user monitorize remote S-NODE users machines using [Teuton Software](https://github.com/teuton-software/teuton).
+**Manual**
 
-When a S-NODE user wants to be tested, must wait until T-NODE user launch manually Teuton test units. Or start TeutonServer and attend request automatically.
+User from T-NODE machine monitorize remote S-NODE machines using [Teuton Software](https://github.com/teuton-software/teuton). So when a S-NODE user is ready to be tested, must wait until T-NODE user decided to launch manually Teuton test units.
 
-**Teuton client** is used for S-NODE users, to send request to TeutonServer (T-NODE host). This way, S-NODE host is evaluated by the server at any time without T-NODE user intervention.
+**Auto**
 
+If T-NODE user starts TeutonServer, then requests will be attended automatically.
+
+S-NODE users execute **Teuton client**, to send request to TeutonServer (T-NODE host). So, S-NODE host is evaluated by the server at any time without T-NODE user intervention.
+
+---
 ## Installation
 
 `gem install teuton-client`
 
+---
 ## Running
 
-* First, TeutonServer must be running into T-NODE host.
+* First, [TeutonServer](https://github.com/teuton-software/teuton-server) must be running into T-NODE host.
 * `teuton-client SERVER-IP 16001`, S-NODE user send requet ro server.
 
 ## Examples
@@ -32,4 +38,4 @@ teuton-client => Waiting...   SERVER-IP:16001 (teuton-server)
               => Grade      : 100
 ```
 
-TeutonServer process request and responds with evaluation grade 100% OK.
+In this example, TeutonServer processed request and responded with evaluation grade equal to 100.
