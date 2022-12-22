@@ -1,7 +1,7 @@
 
-[![Gem Version](https://badge.fury.io/rb/teuton-client.svg)](https://badge.fury.io/rb/teuton-client)
-
 # Teuton Client
+
+[![Gem Version](https://badge.fury.io/rb/teuton-client.svg)](https://badge.fury.io/rb/teuton-client)
 
 [Teuton Software](https://github.com/teuton-software/teuton) is an infrastructure test application, that is installed into host called T-NODE.
 
@@ -15,13 +15,11 @@ If T-NODE user starts TeutonServer, then requests will be attended automatically
 
 S-NODE users execute **Teuton client**, to send request to TeutonServer (T-NODE host). So, S-NODE host is evaluated by the server at any time without T-NODE user intervention.
 
----
 ## Installation
 
 `gem install teuton-client`
 
----
-## Running
+## Usage
 
 * First, [TeutonServer](https://github.com/teuton-software/teuton-server) must be running into T-NODE host.
 * `teuton-client SERVER-IP 16001`, S-NODE user send requet ro server.
